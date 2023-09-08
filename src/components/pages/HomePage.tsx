@@ -4,6 +4,7 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import ImageService, { Image_Post } from "../../Services/ImageService";
 import NavBar from "../atoms/NavBar";
+import LikeButton from "../atoms/LikeButton";
 
 export default function Homepage() {
   const [images, setImage] = React.useState([]);
@@ -45,7 +46,11 @@ export default function Homepage() {
                       margin: "10px",
                     }}
                   />
+                  <p> {image.author.firstName} </p>
+
                   <p> {image.description} </p>
+
+                  <LikeButton />
                 </Paper>
               </Grid>
             ))}
