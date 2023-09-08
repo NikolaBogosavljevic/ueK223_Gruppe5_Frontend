@@ -1,21 +1,57 @@
-import { Box, flexbox } from '@mui/system';
-import logo from '../../logo1.png';
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Paper from "@mui/material/Paper";
+import Grid from "@mui/material/Grid";
+import ImageService, { Image_Post } from "../../Services/ImageService";
+import NavBar from "../atoms/NavBar";
 
-export default function HomePage() {
+export default function Homepage() {
+  const [images, setImage] = React.useState([]);
+  React.useEffect(() => {
+    const service = ImageService;
+    service
+      .getImage()
+      .then((data: React.SetStateAction<never[]>) => {
+        console.log(data);
+        setImage(data);
+      })
+      .catch((error: any) => {
+        console.error("Fehler beim Abrufen der Bilder: ", error);
+      });
+  }, []);
   return (
-    <Box
-      display='flex'
-      alignItems='center'
-      justifyContent='center'
-      flexDirection={'column'}
-    >
-      <h1>Welcome to the Homepage</h1>
-      <img
-        src={logo}
-        style={{ filter: 'invert(100%)' }}
-        className='App-logo'
-        alt='logo'
-      />
-    </Box>
+    <div>
+      <NavBar />
+      {
+        <Box>
+          <Grid container spacing={1}>
+            {images.map((image: Image_Post, index) => (
+              <Grid
+                item
+                key={index}
+                xs={2}
+                marginTop={"10px"}
+                marginLeft={"45px"}
+              >
+                <Paper elevation={0} sx={{ padding: 2 }}>
+                  <img
+                    src={image.image}
+                    alt={`Bild ${index}`}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      borderRadius: "0px",
+                      padding: "1px",
+                      margin: "10px",
+                    }}
+                  />
+                  <p> {image.description} </p>
+                </Paper>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+      }
+    </div>
   );
 }

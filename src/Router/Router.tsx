@@ -1,9 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import LoginPage from "../components/pages/LoginPage/LoginPage";
 import PrivateRoute from "./PrivateRoute";
-import HomePage from "../components/pages/HomePage";
 import UserTable from "../components/pages/UserPage/UserTable";
 import UserPage from "../components/pages/UserPage/UserPage";
+import Login from "../components/pages/LoginPage/LoginPage";
+import HomePage from "../components/pages/HomePage";
 
 /**
  * Router component renders a route switch with all available pages
@@ -17,7 +18,7 @@ const Router = () => {
   return (
     <Routes>
       <Route path={"/"} element={<HomePage />} />
-      <Route path={"/login"} element={<LoginPage />} />
+      <Route path={"/Login"} element={<LoginPage/>} />
 
       <Route
         path={"/users"}

@@ -14,6 +14,7 @@ const AuthorityService = {
       });
     });
   },
+  
   hasAuthority: (authority: Authority) => {
     AuthorityService.initAuthoritySet();
     return authoritySet.has(authority);
