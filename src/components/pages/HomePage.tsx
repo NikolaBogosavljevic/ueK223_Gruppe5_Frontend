@@ -11,7 +11,7 @@ export default function Homepage() {
   React.useEffect(() => {
     const service = ImageService;
     service
-      .getImage()
+      .getAllImages()
       .then((data: React.SetStateAction<never[]>) => {
         console.log(data);
         setImage(data);
@@ -46,7 +46,6 @@ export default function Homepage() {
                       margin: "10px",
                     }}
                   />
-                  <p> {image.author.firstName} </p>
 
                   <p> {image.description} </p>
 
