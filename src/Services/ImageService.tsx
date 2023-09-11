@@ -25,7 +25,7 @@ const ImageService = {
   },
 
   createImage: async (params: AddImageRequest) => {
-    const res = await api.post("/imagepost/create", params);
+    const res = await api.post("/imagepost/", params);
     if (res && res.status === 200) {
       console.log("image successfully created");
     }
@@ -33,7 +33,7 @@ const ImageService = {
 
   getAllImages: async () => {
     try {
-      const response = await api.get("/imagepost/getAll");
+      const response = await api.get("/imagepost/");
       return response.data;
     } catch (error) {
       console.error("ERRORRRRRRRR", error);
