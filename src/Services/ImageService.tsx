@@ -41,9 +41,7 @@ const ImageService = {
     }
   },
 
-  deleteUser: (id: string) => {
-    return api.delete(`/imagepost/${id}`);
-  },
+
 };
 
 export default ImageService;
