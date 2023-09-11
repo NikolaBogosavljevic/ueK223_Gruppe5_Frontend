@@ -11,7 +11,7 @@ export type Image_Post = {
 type AddImageRequest = {
   image: string;
   description: string | null;
- 
+ author: User;
  
 };
 const ImageService = {

@@ -1,10 +1,13 @@
 import { useFormik } from "formik";
 import { useNavigate, useParams } from "react-router-dom";
 import ImageService from "../../Services/ImageService";
+import { useContext } from "react";
+import ActiveUserContext from "../../Contexts/ActiveUserContext";
 
 export default function CreateImage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const context = useContext(ActiveUserContext);
 
   const formik = useFormik({
     initialValues: {
@@ -17,14 +20,14 @@ export default function CreateImage() {
   });
 
   const handleSubmit = (image:string, description:string) => {
-    ImageService.createImage({ image:image, description:description})
+    if(context.user){ImageService.createImage({ image:image, description:description, author:context.user})
       .then((response) => {
         console.log("response", response);
         navigate("/");
       })
       .catch((e) => {
         postMessage(e.response.data);
-      });
+      });}
   };
 
   return (

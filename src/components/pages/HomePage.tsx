@@ -5,8 +5,13 @@ import Grid from "@mui/material/Grid";
 import ImageService, { Image_Post } from "../../Services/ImageService";
 import NavBar from "../atoms/NavBar";
 import LikeButton from "../atoms/LikeButton";
+import { User } from "../../types/models/User.model";
+import { useContext } from "react";
+import ActiveUserContext from "../../Contexts/ActiveUserContext";
 
 export default function Homepage() {
+  const context = useContext(ActiveUserContext);
+
   const [images, setImage] = React.useState([]);
   React.useEffect(() => {
     const service = ImageService;
@@ -20,6 +25,14 @@ export default function Homepage() {
         console.error("Fehler beim Abrufen der Bilder: ", error);
       });
   }, []);
+
+  function userCanEditPost(post:Image_Post, user:User){
+    if(post.author ){
+    return user.id === post.author.id ||
+    context.checkRole("ADMIN")
+    }
+  }
+
   return (
     <div>
       <NavBar />
@@ -46,10 +59,12 @@ export default function Homepage() {
                       margin: "10px",
                     }}
                   />
+                  <p> {image.author ? image.author.firstName: "undefined"} </p>
 
                   <p> {image.description} </p>
 
                   <LikeButton />
+               {context.user && userCanEditPost(image, context.user ) &&   <button>test</button>} 
                 </Paper>
               </Grid>
             ))}
@@ -59,3 +74,7 @@ export default function Homepage() {
     </div>
   );
 }
+
+
+
+
