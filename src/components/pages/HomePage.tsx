@@ -8,7 +8,6 @@ import LikeButton from "../atoms/LikeButton";
 import { User } from "../../types/models/User.model";
 import { useContext } from "react";
 import ActiveUserContext from "../../Contexts/ActiveUserContext";
-import CreateImage from "./CreateImage";
 import { Link } from "react-router-dom";
 
 export default function Homepage() {
@@ -67,8 +66,7 @@ export default function Homepage() {
 
                   <LikeButton />
                {context.user && userCanEditPost(image, context.user ) &&   <button>delete</button>} 
-               {context.user && userCanEditPost(image, context.user ) &&   <Link to={"/add"}><button >edit</button></Link>} 
-
+               <Link to={`/editimage/${image.id}`}><button >Edit</button></Link>
                 </Paper>
               </Grid>
             ))}

@@ -1,7 +1,7 @@
 import api from '../config/Api';
 import { User } from '../types/models/User.model';
 export type Image_Post = {
-  id: number;
+  id: string;
   image: string;
   description: string;
   likes: number;
@@ -15,15 +15,13 @@ type AddImageRequest = {
  
 };
 const ImageService = {
-  getImage: async (imageID: string): Promise<Image_Post> => {
-    const { data } = await api.get<Image_Post>(`/imagepost/${imageID}`);
-    return data;
-  },
 
-  updateImage: (image: Image_Post) => {
-    return api.put(`/imagepost/${image.id}`, image);
+  updateImage: async (params: Image_Post) => {
+    const res = await api.put(`/imagepost/${params.id}`, {...params,"Image": params.image, "Description": params.description});
+    if (res && res.status === 200) {
+      console.log("image successfully updated");
+    }
   },
-
   createImage: async (params: AddImageRequest) => {
     const res = await api.post("/imagepost/", params);
     if (res && res.status === 200) {
@@ -39,6 +37,11 @@ const ImageService = {
       console.error("ERRORRRRRRRR", error);
       return [];
     }
+  },
+  getImageById: async (imageId: string) => {
+    const data = await api.get(`/imagepost/${imageId}`);
+    console.log(data);
+    return data.data;
   },
 
   deleteImage: (image: Image_Post) => {

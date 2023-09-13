@@ -6,6 +6,7 @@ import UserPage from "../components/pages/UserPage/UserPage";
 import Login from "../components/pages/LoginPage/LoginPage";
 import HomePage from "../components/pages/HomePage";
 import CreateImage from "../components/pages/CreateImage";
+import UpdateImage from "../components/pages/UpdateImage";
 
 /**
  * Router component renders a route switch with all available pages
@@ -21,6 +22,7 @@ const Router = () => {
       <Route path={"/"} element={<HomePage />} />
       <Route path={"/Login"} element={<LoginPage/>} />
       <Route path={"/add"} element={<CreateImage/>} />
+      <Route path={"/editimage/:imageId"} element={<UpdateImage/>} />
 
       <Route
         path={"/users"}
