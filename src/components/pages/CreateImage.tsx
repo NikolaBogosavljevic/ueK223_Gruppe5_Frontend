@@ -55,7 +55,9 @@ export default function CreateImage() {
           value={formik.values.description}
         />
       </div>
-      <button type="submit">Submit</button>
+      <button type="submit">add</button>
+      <button type="submit" > <a href="/"/>cancel</button>
+
     </form>
   );
 }

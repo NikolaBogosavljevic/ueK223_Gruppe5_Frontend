@@ -41,7 +41,9 @@ const ImageService = {
     }
   },
 
-
+  deleteImage: (image: Image_Post) => {
+    return api.delete(`/image/${image.id}`);
+  },
 };
 
 export default ImageService;
