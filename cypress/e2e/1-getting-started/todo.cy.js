@@ -15,91 +15,39 @@ describe('example to-do app', () => {
 
   it('should click a button and stay on the login page', () => {
 
-    cy.visit("http://localhost:8080")
-
-  // Überprüfen Sie, ob die URL vor dem Klicken auf die Schaltfläche nicht auf "/login" endet.
-
- /*
-
-  cy.wait(2000)
-
-  // Klicken Sie auf die Schaltfläche
-
-  cy.get('.MuiButtonBase-root').click();
+    cy.visit("localhost:3000/")
 
 
 
-  // Überprüfen Sie, ob sich die URL nach dem Klicken auf die Schaltfläche auf "/login" ändert.
-
- 
+    cy.get('#email').type('admin@example.com');
 
 
 
-  // Fügen Sie weitere Assertions hinzu, um das erwartete Verhalten auf der Seite "/login" zu überprüfen.
 
-});
-
-});
-
-
-
-describe('Login Page', () => {
-
-it('should fill in email and password fields', () => {
-
-cy.visit("localhost:3000/login")
-
-cy.wait(2000)
-
-// Geben Sie "sairam@example.com" in das Email-Feld ein
-
-cy.get('#email').type('sairam@example.com');
-
-
-
-// Geben Sie "1234" in das Passwort-Feld ein
 
 cy.get('#password').type('1234');
 
-
-
-// Führen Sie ggf. weitere Assertions durch, um sicherzustellen,
-
-// dass die Eingaben korrekt sind.
-
-// Zum Beispiel, um sicherzustellen, dass die eingegebenen Werte
-
-// tatsächlich in den Eingabefeldern stehen:
-
-cy.get('#email').should('have.value', 'sairam@example.com');
-
-cy.get('#password').should('have.value', '1234');
-
-cy.wait(2000)
-
 cy.get('.MuiButtonBase-root').click();
 
-cy.wait(2000)
+});
 
-cy.get('.css-gflbrf > .MuiBox-root > :nth-child(2)').click();
+describe('example to-do app', () => {
 
-cy.wait(2000)
+  it('should click a button and stay on the login page', () => {
 
-cy.get('.MuiButton-containedSuccess').click();
+    cy.visit("localhost:3000/add");
 
-cy.wait(2000)
+    cy.get('#image').type('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLnZ8h4RwqL2AxX-c9x7TO8EkzzEZAEb_6cA&usqp=CAU');
+    cy.get('#description').type("nuova");
 
+    cy.get('[type="submit"]').click();
+    cy.visit("localhost:3000/");
 
-
-
-
-*/
 
 
 });
 
+ 
 
-
-
-
+});
 });

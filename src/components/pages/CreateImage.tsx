@@ -56,7 +56,7 @@ export default function CreateImage() {
         />
       </div>
       <button type="submit">add</button>
-      <button type="submit" > <a href="/"/>cancel</button>
+      <button  > <a href="/"/>cancel</button>
 
     </form>
   );
