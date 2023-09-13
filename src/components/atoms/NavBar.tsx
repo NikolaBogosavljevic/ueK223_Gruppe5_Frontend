@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,7 +13,9 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-const pages = ['Products', 'Pricing', 'Blog'];
+import { Link } from 'react-router-dom';
+
+const pages = ['Users', 'Posts', 'Login'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -60,6 +63,7 @@ function ResponsiveAppBar() {
               onClick={handleOpenNavMenu}
               color="inherit"
             >
+
               <MenuIcon />
             </IconButton>
             <Menu
@@ -107,15 +111,32 @@ function ResponsiveAppBar() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            <Link to={"/users"}>
               <Button
-                key={page}
+                key={pages[0]}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                {pages[0]}
+              </Button>
+              </Link>
+              <Link to={"/"}>
+              <Button
+                key={pages[1]}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                {pages[1]}
               </Button>
-            ))}
+              </Link>
+              <Link to={"/Login"}>
+              <Button
+                key={pages[2]}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                {pages[2]}
+              </Button>
+              </Link>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">

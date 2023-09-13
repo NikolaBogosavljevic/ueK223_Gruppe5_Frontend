@@ -64,7 +64,8 @@ export default function Homepage() {
 
                   <p> {image.description} </p>
 
-                  <LikeButton />
+                    
+                  <LikeButton />                               {/*Delete button geht nicht aus unbekannten Gründen*/}
                {context.user && userCanEditPost(image, context.user ) &&   <button>delete</button>} 
                <Link to={`/editimage/${image.id}`}><button >Edit</button></Link>
                 </Paper>
